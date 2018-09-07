@@ -1,2 +1,5 @@
 .project
 
+bitcoin/regtest/*
+!bitcoin/regtest/server.cert
+!bitcoin/regtest/server.pem

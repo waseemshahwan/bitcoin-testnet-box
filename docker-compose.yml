@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  bitcoin-1:
+    build: 
+      context: ./bitcoin
+      args:
+        rpcuser: bitcoin
+        rpcpass: bitcoin
+        connect: bitcoin-2:19000
+    container_name: bitcoin-1
+  bitcoin-2:
+    build: 
+      context: ./bitcoin
+      args:
+        rpcuser: bitcoin
+        rpcpass: bitcoin
+        connect: bitcoin-1:19000
+    container_name: bitcoin-2
+    ports:
+      - 18111:19111 # rpc port
+      - 18000:19000 # connect your local node for a wallet
